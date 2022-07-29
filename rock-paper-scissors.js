@@ -12,3 +12,9 @@ function getComputerChoice(){
     }
 }
 
+function capitalized(playerSelection){
+    playerSelection = playerSelection.toLowerCase();
+  
+    return playerSelection.replace(playerSelection[0],playerSelection[0].toUpperCase());
+}
+
