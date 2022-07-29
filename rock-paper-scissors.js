@@ -44,3 +44,13 @@ function playerSelectionValidation(playerSelection){
     }
 }
 
+function whoWin(winCount, loseCount){
+    if(winCount > loseCount){
+        alert("YOU WIN!!!");
+    }else if(winCount < loseCount){
+    alert("You lose :(");
+    }else if(winCount === loseCount){
+    alert("It's a draw");
+    }
+}
+
