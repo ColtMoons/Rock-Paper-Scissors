@@ -37,3 +37,10 @@ function gameStart(playerSelection, computerSelection){
     }
 }
 
+function playerSelectionValidation(playerSelection){
+    if(!(playerSelection === "Rock" || playerSelection === "Scissors" || playerSelection === "Paper")){
+        console.log("Not valid, please enter a Rock Paper or Scissors")
+        return false;
+    }
+}
+
