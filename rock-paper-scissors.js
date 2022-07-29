@@ -18,3 +18,22 @@ function capitalized(playerSelection){
     return playerSelection.replace(playerSelection[0],playerSelection[0].toUpperCase());
 }
 
+function gameStart(playerSelection, computerSelection){
+    let win = true;
+    if(playerSelection === computerSelection){
+        return `Draw! ${capitalized(playerSelection)} is equal to ${computerSelection}`
+    }else if(playerSelection === "Paper" && computerSelection === "Scissors"){
+        win = false;
+    }else if(playerSelection === "Rock" && computerSelection === "Paper"){
+        win = false;
+    }else if(playerSelection === "Scissors" && computerSelection === "Rock"){
+        win = false;
+    }
+
+    if(win){
+        return `You Win! ${playerSelection} beats ${computerSelection}`
+    }else{
+        return `You Lose! ${computerSelection} beats ${playerSelection}`
+    }
+}
+
