@@ -54,30 +54,31 @@ function whoWin(winCount, loseCount){
     }
 }
 
-
-
-
-
 function game(event){
     
-    let playerSelection;
-    let winCount = 0;
-    let loseCount = 0;
-    let result;
+    count++
     
-    playerSelection = capitalized(this.firstElementChild.alt);
-    result = gameStart(playerSelection, getComputerChoice());
+    const playerSelection = capitalized(this.firstElementChild.alt);
+    const result = gameStart(playerSelection, getComputerChoice());
+    
     console.log(result);
     
-    result.includes('Win') ? winCount++ : loseCount++;
-
-    whoWin(winCount, loseCount);
+    if(result.includes('Win')){
+        winCount++;
+    }else if(result.includes('Lose')){
+        loseCount++;
+    }
+    
+    if(count === 5){
+        whoWin(winCount, loseCount);
+        count = winCount = loseCount = 0;
+    }
 }
 
+let count = 0;
+let winCount = 0;
+let loseCount = 0;
 
-const playerSelection = document.querySelectorAll('.selection');
+const playerSelections = document.querySelectorAll('.selection');
     
-playerSelection.forEach(selection => selection.addEventListener('click',game));
-
-
-//game();
+playerSelections.forEach(selection => selection.addEventListener('click', game));
