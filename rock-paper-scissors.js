@@ -54,30 +54,30 @@ function whoWin(winCount, loseCount){
     }
 }
 
-function game(){
+
+
+
+
+function game(event){
+    
     let playerSelection;
     let winCount = 0;
     let loseCount = 0;
     let result;
-
-    for(let i = 0; i < 5; i++){
-
-        do{
-            playerSelection = capitalized(prompt("Write your selection Rock Paper or Scissors"));
-        
-        }while(playerSelectionValidation(playerSelection) === false)
     
-        result = gameStart(playerSelection, getComputerChoice());
-        console.log(result);
-
-        if(result.includes("Win")){
-            winCount++;
-        }else if(result.includes("Lose")){
-            loseCount++;
-        }
-    }
+    playerSelection = capitalized(this.firstElementChild.alt);
+    result = gameStart(playerSelection, getComputerChoice());
+    console.log(result);
+    
+    result.includes('Win') ? winCount++ : loseCount++;
 
     whoWin(winCount, loseCount);
 }
 
-game();
+
+const playerSelection = document.querySelectorAll('.selection');
+    
+playerSelection.forEach(selection => selection.addEventListener('click',game));
+
+
+//game();
