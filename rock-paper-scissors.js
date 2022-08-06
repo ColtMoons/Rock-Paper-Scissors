@@ -54,12 +54,22 @@ function printResult(result){
     print.textContent = result;
 }
 
+function createScoreElement(){
+    const contentElement = document.querySelector('.content');
+    const score = document.createElement('div');
+    score.classList.add('score');
+    score.style.cssText = 'height: 100px; font-size: 30px; font-weight: bold; display: flex; justify-content: center; align-items: center;'
+    contentElement.insertBefore(score,contentElement.firstChild)
+    
+}
+
 function game(event){
     
     count++
     
     const playerSelection = capitalized(this.firstElementChild.alt);
     const result = gameStart(playerSelection, getComputerChoice());
+    
     
     printResult(result);
     
@@ -69,9 +79,17 @@ function game(event){
         loseCount++;
     }
     
+    if(count === 1){
+        createScoreElement();
+    }
+    const score = document.querySelector('.score');
+
+    score.textContent = `${winCount} - ${loseCount}`
+
     if(count === 5){
         whoWin(winCount, loseCount);
         count = winCount = loseCount = 0;
+        score.remove();
     }
 }
 
