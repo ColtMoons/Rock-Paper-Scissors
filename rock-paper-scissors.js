@@ -37,21 +37,21 @@ function gameStart(playerSelection, computerSelection){
     }
 }
 
-function playerSelectionValidation(playerSelection){
-    if(!(playerSelection === "Rock" || playerSelection === "Scissors" || playerSelection === "Paper")){
-        console.log("Not valid, please enter a Rock Paper or Scissors")
-        return false;
+function whoWin(winCount, loseCount){
+    const print = document.querySelector('.result');
+
+    if(winCount > loseCount){
+        print.textContent = "YOU WIN!!!";
+    }else if(winCount < loseCount){
+        print.textContent = "YOU LOSE :(";
+    }else if(winCount === loseCount){
+        print.textContent = "It's a draw!!!!"
     }
 }
 
-function whoWin(winCount, loseCount){
-    if(winCount > loseCount){
-        alert("YOU WIN!!!");
-    }else if(winCount < loseCount){
-    alert("You lose :(");
-    }else if(winCount === loseCount){
-    alert("It's a draw");
-    }
+function printResult(result){
+    const print = document.querySelector('.result');
+    print.textContent = result;
 }
 
 function game(event){
@@ -61,7 +61,7 @@ function game(event){
     const playerSelection = capitalized(this.firstElementChild.alt);
     const result = gameStart(playerSelection, getComputerChoice());
     
-    console.log(result);
+    printResult(result);
     
     if(result.includes('Win')){
         winCount++;
